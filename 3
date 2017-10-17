@@ -1,0 +1,35 @@
+int		ft_size_tab(char *arg0)
+{
+	int		i;
+	int		sizetab;
+
+	i = 0;
+	sizetab = 0;
+	while (arg0)
+	{
+		while (arg0[i] != ('%' || '\0'))
+		{
+			i++;
+			if (arg0[i] == ('\0' || '%'))
+				sizetab++;
+		}
+		if (arg0[i] == '\0')
+			return (sizetab);
+		else if (arg0[i] == '%' && arg0[i + 1] == '%')
+		{
+			i = i + 2;
+			sizetab++;
+		}
+		else if (arg0[i] = '%')
+		{
+			while (arg0[i] != ('d' || 'i' || 's' || 'p' || 'S' || 'D' || 'U' || 'O' || 'o' || 'u' || 'x' || 'X' || 'c' || 'C'  || '\0'))
+				i++;
+			sizetab++;
+			if(arg0[i] == '\0')
+				return (sizetab);
+		}
+		else 
+			i++;
+	}
+	return (sizetab);
+}
