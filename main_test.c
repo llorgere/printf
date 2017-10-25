@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-char	**ft_watinit(const char *str, int sizetab);
+char	**ft_watinit(const char *arg0, int sizetab);
 int		ft_size_tab(const char *str);
 char	*ft_strndup(const char *s, size_t n);
 
@@ -19,10 +19,10 @@ int		main(void)
 	st = ft_size_tab(str);
 	printf("st est %d\n", st);
 	tab = ft_watinit(str, st);
-	printf("watinit bien passe dans le main");
+	printf("watinit bien passe dans le main\n");
 	while (tab[i] != '\0')
 	{
-		printf("%s\n", tab[i]);
+		printf("[%s]\n", tab[i]);
 		i++;
 	}
 	free(tab);

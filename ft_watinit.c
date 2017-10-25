@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 char	**ft_watinit(const char *arg0, int sizetab);
-int		ft_size_tab(char *arg0);
+int		ft_size_tab(const char *str);
 char	*ft_strndup(const char *s, size_t n);
 
 char	**ft_watinit(const char *arg0, int sizetab)
@@ -17,29 +17,31 @@ char	**ft_watinit(const char *arg0, int sizetab)
 	i = 0;
 	j = 0;
 	k = 0;
-	printf("arg0 est [%s]", arg0);
+	printf("arg0 est [%s] et sizetab est %d\n", arg0, sizetab);
 //	nb_conv = 0;
 //	pos_conv = malloc(sizeof(int) * (sizetab + 1));
 //	pos_conv[sizetab] = -1;
-	tab = malloc(sizeof(char *) * (sizetab + 1));
+	tab = malloc(sizeof(char *) * (sizetab));
 	tmp = arg0;
-	printf("tmp est [%s]", tmp);
-	tab[sizetab] = malloc(sizeof(char) * 1);
-	tab[sizetab] = '\0';
 //	printf("tmp est [%s]", tmp);
+/*	tab[sizetab] = malloc(sizeof(char) * 1);
+	tab[sizetab][0] = '\0';
+*/	printf("tmp est [%s]\n", tmp);
 	while (tmp[i] != '\0')
 	{
+		k = i;
 		while (tmp[i] != '%' && tmp[i] != '\0')
 		{
 			i++;
-			if (tmp[i] == '\0' || tmp[i] != '%')
+			if (tmp[i] == '\0' || tmp[i] == '%')
 			{
-				tab[j] = ft_strndup(tmp, (size_t)i);
+				tab[j] = ft_strndup(tmp + k, (size_t)(i - k));
 //				pos_conv[j] = 0;
-				printf("ft_watinit 1 || tab[j] est [%s]\n", tab[j - 1]);
+//				printf("ft_watinit 1 || tab[j] est [%s]\n", tab[j - 1]);
 				j++;
 			}
 		}
+		printf("ft_watinit 1 || tab[%d] est [%s]\n", (j - 1), tab[j - 1]);
 		if (tmp[i] == '\0')
 		{
 //			tab[j] = '\0';
@@ -52,7 +54,7 @@ char	**ft_watinit(const char *arg0, int sizetab)
 			tab[j][1] = '\0';
 			i = i + 2;
 //			pos_conv[j] = 0;
-			printf("ft_watinit 1 || tab[j] est [%s]", tab[j]);
+			printf("ft_watinit 2 || tab[%d] est [%s]\n", j, tab[j]);
 			j++;
 		}
 		else if (tmp[i] == '%')
@@ -63,7 +65,9 @@ char	**ft_watinit(const char *arg0, int sizetab)
 				i++;
 				printf("test de la boucle %%\n");
 			}
-			tab[j] = ft_strndup(tmp + k, (i - k));
+			printf("ft_watinit 3.1 || tab[%d] devrait donner est [%s]\n", j, tab[j]);
+			tab[j] = ft_strndup(tmp + k, (i - k + 1));
+			printf("ft_watinit 3.2 || tab[%d] est [%s]\n", j, tab[j]);
 //			nb_conv++;
 //			pos_conv[j] = 1;
 			j++;
@@ -73,6 +77,7 @@ char	**ft_watinit(const char *arg0, int sizetab)
 //				tab[j] = '\0';
 				return (tab);
 			}
+			i++;
 		}
 		else
 			i++;

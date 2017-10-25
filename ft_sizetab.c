@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-char	**ft_watinit(const char *str, int sizetab);
+char	**ft_watinit(const char *arg0, int sizetab);
 //int		ft_size_tab(const char *str);
 char	*ft_strndup(const char *s, size_t n);
 
