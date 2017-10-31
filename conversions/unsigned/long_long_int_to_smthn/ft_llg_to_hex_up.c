@@ -1,8 +1,6 @@
-//#include "libft.h"
-#include <stdio.h>
 #include <stdlib.h>
 
-static char	*ft_dec_to_hex_malloc(unsigned int n, int j)
+static char	*ft_llg_to_hex_malloc(long long unsigned int n, int j)
 {
 	char	*tab;
 
@@ -23,10 +21,10 @@ static char	*ft_dec_to_hex_malloc(unsigned int n, int j)
 	return (tab);
 }
 
-char		*ft_dec_to_hex_up(unsigned int n)
+char		*ft_llg_to_hex_up(long long unsigned int n)
 {
-	int		i;
-	int		j;
+	long long unsigned int	i;
+	int						j;
 
 	i = n;
 	j = 0;
@@ -35,5 +33,5 @@ char		*ft_dec_to_hex_up(unsigned int n)
 		i = i / 16;
 		j++;
 	}
-	return (ft_dec_to_hex_malloc(n, j));
+	return (ft_llg_to_hex_malloc(n, j));
 }

@@ -1,7 +1,6 @@
-#include <stdio.h>
 #include <stdlib.h>
 
-static char	*ft_dec_to_oct_malloc(unsigned int n, int j)
+static char	*ft_sh_to_oct_malloc(unsigned short int n, int j)
 {
 	char	*tab;
 
@@ -19,10 +18,10 @@ static char	*ft_dec_to_oct_malloc(unsigned int n, int j)
 	return (tab);
 }
 
-char		*ft_dec_to_oct(unsigned int n)
+char		*ft_sh_to_oct(unsigned short int n)
 {
-	int		i;
-	int		j;
+	unsigned short int	i;
+	int					j;
 
 	i = n;
 	j = 0;
@@ -31,5 +30,5 @@ char		*ft_dec_to_oct(unsigned int n)
 		i = i / 8;
 		j++;
 	}
-	return (ft_dec_to_oct_malloc(n, j));
+	return (ft_sh_to_oct_malloc(n, j));
 }
