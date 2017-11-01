@@ -2,6 +2,7 @@
 
 int		main(void)
 {
+	void	*g;
 	int		a;
 	short	b;
 	int 	c;
@@ -12,7 +13,9 @@ int		main(void)
 	char	B;
 	char	C;
 	char	D;
+	char	h;
 
+	h = 129;
 	a = 1789;
 	b = 2;
 	c = -3;
@@ -23,6 +26,7 @@ int		main(void)
 	B = 'b';
 	C = 'c';
 	D = 'd';
+//	*g = 16;
 	printf("test de {-+10d} || [%-+10d]\n", a);
 	printf("test de {6.3d} || [%1.2d]\n", a);
 	printf("test de {010d} || [%010d]\n", a);
@@ -48,6 +52,7 @@ int		main(void)
 	printf("test de {+10d} || [%+10d]\n", b);
 	printf("test de {+010d} || [%+010d]\n", b);
 	printf("test de { d} || [% d]\n", c);
+	printf("fopnctionnement de p [%p]", g);
 	printf("[%010d]\n", b);
 	printf("[%-10d]\n", c);
 	printf("[%010ld]\n", d);
@@ -56,5 +61,6 @@ int		main(void)
 	printf("[%c]\n", C);
 	printf("[%c]\n", D);
 	printf("[%X]\n", f);
+	printf("[%hhd]\n", h);
 	return (0);
 }
