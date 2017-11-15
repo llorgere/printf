@@ -1,3 +1,5 @@
+#include "libftprintf.h"
+
 static char	*ft_imtoa_min(intmax_t n)
 {
 	int		j;

@@ -4,6 +4,7 @@
 #include <stddef.h>
 #include <wchar.h>
 #include <sys/types.h>
+#include "libftprintf.h"
 
 static char	*ft_sitoa_min(short int n)
 {
@@ -11,11 +12,11 @@ static char	*ft_sitoa_min(short int n)
 	char	*tab;
 
 	j = 0;
-	if (!(tab = (char *)malloc(sizeof(*tab) * (12))))
+	if (!(tab = (char *)malloc(sizeof(*tab) * (7))))
 		return (0);
 	tab[0] = '-';
-	tab[11] = '\0';
-	tab[10] = '8';
+	tab[6] = '\0';
+	tab[5] = '8';
 	n = -(n / 10);
 	j = 10;
 	while (n > 0)

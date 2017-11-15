@@ -1,4 +1,5 @@
 #include <stdlib.h>
+#include "libftprintf.h"
 
 static char	*ft_lg_to_oct_malloc(unsigned long int n, int j)
 {

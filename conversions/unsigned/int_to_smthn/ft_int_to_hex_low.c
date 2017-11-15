@@ -1,4 +1,5 @@
 #include <stdlib.h>
+#include "libftprintf.h"
 
 static char	*ft_int_to_hex_malloc(unsigned int n, int j)
 {

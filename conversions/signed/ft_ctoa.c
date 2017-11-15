@@ -4,6 +4,7 @@
 #include <stddef.h>
 #include <wchar.h>
 #include <sys/types.h>
+#include "libftprintf.h"
 
 static char	*ft_ctoa_min(char n)
 {
@@ -11,11 +12,11 @@ static char	*ft_ctoa_min(char n)
 	char	*tab;
 
 	j = 0;
-	if (!(tab = (char *)malloc(sizeof(*tab) * (12))))
+	if (!(tab = (char *)malloc(sizeof(*tab) * (4))))
 		return (0);
 	tab[0] = '-';
-	tab[11] = '\0';
-	tab[10] = '8';
+	tab[3] = '\0';
+	tab[2] = '8';
 	n = -(n / 10);
 	j = 10;
 	while (n > 0)
@@ -55,6 +56,7 @@ char		*ft_ctoa(char n)
 	char	i;
 	int		j;
 
+	printf("\nn est [%hhd]\n", n);
 	i = n;
 	j = 0;
 	if (n == -128)

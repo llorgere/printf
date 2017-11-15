@@ -1,4 +1,5 @@
 #include "libft.h"
+#include "libftprintf.h"
 
 static char	*ft_sttoa_malloc(size_t n, int j)
 {

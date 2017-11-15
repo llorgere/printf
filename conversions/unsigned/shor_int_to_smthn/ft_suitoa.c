@@ -1,4 +1,5 @@
 #include "libft.h"
+#include "libftprintf.h"
 
 static char	*ft_suitoa_malloc(unsigned short int n, int j)
 {

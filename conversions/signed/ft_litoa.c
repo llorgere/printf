@@ -1,3 +1,5 @@
+#include "libftprintf.h"
+
 static char	*ft_litoa_min(long int n)
 {
 	int		j;

@@ -17,19 +17,17 @@ char	*ft_what_type(unsigned int n, va_list ap)
 	}
 	else if (n == 21)
 	{
-		return (ft_sitoa(va_arg(ap, short int)));
+		return (ft_sitoa(va_arg(ap, int)));
 	}
 	else if (n == 26)
 	{
-		return (ft_ctoa(va_arg(ap, char)));
+		return (ft_itoa(va_arg(ap, int)));
 	}
 	else if (n == 36)
 	{
 		return (ft_ssttoa(va_arg(ap, ssize_t)));
 	}
-	else
-		return (NULL);
-/*	else if (n >= 2 && n <= 5)
+	else if (n >= 2 && n <= 5)
 	{
 		return (va_arg(ap, unsigned int));
 //		return (unsigned int);
@@ -81,7 +79,7 @@ char	*ft_what_type(unsigned int n, va_list ap)
 	}
 	else if (n >= 22 && n <= 25)
 	{
-		return (va_arg(ap, short unsigned int));
+		return (va_arg(ap, unsigned int));
 //		return (short unsigned int);
 	}
 	else if (n == 26)
@@ -108,5 +106,6 @@ char	*ft_what_type(unsigned int n, va_list ap)
 		return (va_arg(ap, size_t));
 //		return (size_t);
 	}
-*/
+	else
+		return (NULL);
 }

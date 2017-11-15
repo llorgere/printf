@@ -1,3 +1,4 @@
+/*
 #include <stdarg.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -5,6 +6,8 @@
 #include <stddef.h>
 #include <wchar.h>
 #include <sys/types.h>
+*/
+#include "libftprintf.h"
 
 char	*ft_what_type(unsigned int n, va_list ap);
 
@@ -30,14 +33,16 @@ int		ft_printf(const char *format, ...)
 	int 		j;
 	int			type;
 //	type		wtype;
+	wii			wiit;
 	char		*cur_arg = (char *)format;
 	
 	j = 1;
 	i = 0;
 	nb_args = 0;
+	wiit = ft_watinit(format, ft_sizetab(format));
 	if (format == NULL)
 	{
-		printf("pas d'arguments");
+//		printf("pas d'arguments");
 		return (-1);
 	}
 	va_start(ap, format);
@@ -52,6 +57,7 @@ int		ft_printf(const char *format, ...)
 		i++;
 	}
 	va_end(ap);
+	if (nb_args)
 	i = 0;
 	printf("%s", format);
 	va_start(ap, format);
@@ -71,8 +77,8 @@ int		ft_printf(const char *format, ...)
 int		main(void)
 {
 	int		a = 658;
-	short int	b = 25;
-	char	c = 124;
+	short int	b = 365000;
+	char	c = 496;
 	ssize_t	d = 486;
 	ft_printf("le test de printf est", a, b, c, d, NULL);
 	return (0);

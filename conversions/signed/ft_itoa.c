@@ -4,6 +4,7 @@
 #include <stddef.h>
 #include <wchar.h>
 #include <sys/types.h>
+#include "libftprintf.h"
 
 static char	*ft_itoa_min(int n)
 {

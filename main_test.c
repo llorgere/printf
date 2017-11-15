@@ -1,15 +1,17 @@
 #include <stdio.h>
 #include <stdlib.h>
-char	**ft_watinit(const char *arg0, int sizetab);
+#include "libftprintf.h"
+/*char	**ft_watinit(const char *arg0, int sizetab);
 int		ft_size_tab(const char *str);
 char	*ft_strndup(const char *s, size_t n);
-
+*/
 int		main(void)
 {
-	const char	*str = "salut les copains %.+3d dwadi %% awd %deyt";
+	const char	*str = "salut les %d copains %.+3d dwadi %% awd %deyt";
 //	const char	*str = "salut les copains";
 	int			st;
-	char		**tab;
+//	char		**tab;
+	wii			wtest;
 	int 		i;
 //	char	*tmp;
 
@@ -18,13 +20,23 @@ int		main(void)
 	st = 0;
 	st = ft_size_tab(str);
 	printf("st est %d\n", st);
-	tab = ft_watinit(str, st);
+	wtest = ft_watinit(str, st);
 	printf("watinit bien passe dans le main\n");
-	while (tab[i] != '\0')
+	while (wtest.tab[i]/* != '\0'*/)
 	{
-		printf("[%s]\n", tab[i]);
+		printf("[%s]\n", wtest.tab[i]);
+		i++
+	}
+	printf("test de nb_conv [%d]\n", wtest.nb_conv);
+	i = 0;
+	printf("test de pos_conv\n");
+	while(wtest.pos_conv[i] != -1)
+	{
+		printf("[%d]", wtest.pos_conv[i]);
 		i++;
 	}
-	free(tab);
+	printf("\nfin test de pos_conv\n");
+	free(wtest.tab);
+	free(wtest.pos_conv);
 	return (0);
 }
