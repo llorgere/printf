@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+char		*ft_strndup(const char *s, size_t n);
 int			ft_two_l_conv(char *str)
 {
 	if (str[1] == 'd' || str[0] == 'i')
@@ -170,7 +171,7 @@ int			ft_what_conv(char *str)
 		return (0);
 }
 
-flag_type		*ft_arg_conv(char *tab)
+flag_type		ft_arg_conv(char *tab)
 {
 	int			i;
 	int			tmp;
@@ -228,19 +229,19 @@ flag_type		*ft_arg_conv(char *tab)
 		tmp = i;
 		while (tab[i] >= '0' && tab[i] <= '9')
 			i++;
-		flag->tabpw = ft_strndup(tab + tmp, i - tmp + 1);
-		flag.width = ft_atoi(flag->tabpw);
-		free(flag->tabw);
+		flag.tabpw = ft_strndup(tab + tmp, i - tmp + 1);
+		flag.width = ft_atoi(flag.tabpw);
+		free(flag.tabpw);
 	}
 	if (tab[i] == '.')
 	{
-		i++
+		i++;
 		tmp = i;
 		while (tab[i] >= '0' && tab[i] <= '9')
 			i++;
-		flag->tabpw = ft_strndup(tab + tmp, i - tmp + 1);
-		flag.preci = ft_atoi(flag->tabpw);
-		free(flag->tabw);
+		flag.tabpw = ft_strndup(tab + tmp, i - tmp + 1);
+		flag.preci = ft_atoi(flag.tabpw);
+		free(flag.tabpw);
 	}
 	flag.conv_num = ft_what_conv(tab + i);
 	return (flag);

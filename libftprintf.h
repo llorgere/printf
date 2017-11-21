@@ -39,6 +39,9 @@ typedef struct
 	int		*pos_conv;
 	char	**tab;
 }			wii;
+flag_type	ft_arg_conv(char *tab);
+char		*ft_what_type(int n, va_list ap);
+char		*ft_strndup(const char *s, size_t n);
 wii			ft_watinit(const char *arg0, int sizetab);
 int			ft_size_tab(const char *str);
 char		*ft_arg_conv(char *tab);

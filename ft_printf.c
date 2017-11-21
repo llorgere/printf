@@ -9,9 +9,9 @@
 */
 #include "libftprintf.h"
 
-char	*ft_what_type(unsigned int n, va_list ap);
+char	*ft_what_type(int n, va_list ap);
 
-int		ft_type_arg(int n)
+/*int		ft_type_arg(int n)
 {
 	if (n == 0)
 		return (1);
@@ -24,22 +24,22 @@ int		ft_type_arg(int n)
 	else 
 		return (-1);
 }
-
+*/
 int		ft_printf(const char *format, ...)
 {
 	va_list		ap;
 	int			nb_args;
 	int			i;
-	int 		j;
-	int			type;
+//	int 		j;
+	flag_type	type;
 //	type		wtype;
 	wii			wiit;
 	char		*cur_arg = (char *)format;
 	
-	j = 1;
+//	j = 1;
 	i = 0;
 	nb_args = 0;
-	wiit = ft_watinit(format, ft_sizetab(format));
+	wiit = ft_watinit(format, ft_size_tab(format));
 	if (format == NULL)
 	{
 //		printf("pas d'arguments");
@@ -48,38 +48,49 @@ int		ft_printf(const char *format, ...)
 	va_start(ap, format);
 	while (cur_arg != NULL)
 	{
+		while (wiit.pos_conv[i] != 1 && wiit.tab[i])
+			i++;
 		nb_args++;
-		type = ft_type_arg(i);
+		type = ft_arg_conv(wiit.tab[i]);
 //		wtype = ft_what_type(type);
-		cur_arg = ft_what_type(type, ap);
-		printf("test de va_arg de la premiere boucle cur_arg est : [%s]\n", cur_arg);
+		cur_arg = ft_what_type(type.conv_num, ap);
+//		printf("test de va_arg de la premiere boucle cur_arg est : [%s]\n", cur_arg);
 		free(cur_arg);
 		i++;
 	}
 	va_end(ap);
-	if (nb_args)
+	if (nb_args != wiit.nb_conv)
+		return (-1);
 	i = 0;
-	printf("%s", format);
+//	printf("%s", format);
 	va_start(ap, format);
-	while(j < nb_args)
+	while(wiit.tab[i])
 	{
-		j++;
-		type = ft_type_arg(i);
-		printf(" %s ", cur_arg = ft_what_type(type, ap));
-		free(cur_arg);
+		if (wiit.pos_conv[i] == 0)
+			ft_putstr(wiit.tab[i]);
+		else if (wiit.pos_conv[i] == 1)
+		{
+			type = ft_arg_conv(wiit.tab[i]); 
+			cur_arg = ft_what_type(type.conv_num, ap);
+			ft_putstr(cur_arg);
+//			free(type.tabpw);
+			free(cur_arg);
+		}
 		i++;
 	}
-	printf("\n");
+//	printf("\n");
 	va_end(ap);
+	free(wiit.tab);
 	return (0);
 }
-
+/*
 int		main(void)
 {
 	int		a = 658;
 	short int	b = 365000;
 	char	c = 496;
 	ssize_t	d = 486;
-	ft_printf("le test de printf est", a, b, c, d, NULL);
+	ft_printf("le test de printf a[%d] b[%hd] c[%hhd] d[%jd]\n", a, b, c, d, NULL);
 	return (0);
 }
+*/

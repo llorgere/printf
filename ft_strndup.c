@@ -29,15 +29,15 @@ char	*ft_strndup(const char *s, size_t n)
 		i++;
 	if (i < n)
 	{
-	moc = (char*)malloc(sizeof(*moc) * (n + 1));
-	if (!moc)
-		return (NULL);
+		moc = (char*)malloc(sizeof(*moc) * (n + 1));
+		if (!moc)
+			return (NULL);
 	}
 	else
 	{
-	moc = (char*)malloc(sizeof(*moc) * (i));
-	if (!moc)
-		return (NULL);
+		moc = (char*)malloc(sizeof(*moc) * (i));
+		if (!moc)
+			return (NULL);
 	}
 	while (j < i && j < n)
 	{
