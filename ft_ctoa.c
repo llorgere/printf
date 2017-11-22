@@ -1,9 +1,10 @@
-#include <stdlib.h>
+/*#include <stdlib.h>
 #include <stdarg.h>
 #include <inttypes.h>
 #include <stddef.h>
 #include <wchar.h>
 #include <sys/types.h>
+*/
 #include "libftprintf.h"
 
 static char	*ft_ctoa_min(char n)
@@ -56,7 +57,7 @@ char		*ft_ctoa(char n)
 	char	i;
 	int		j;
 
-	printf("\nn est [%hhd]\n", n);
+//	printf("\nn est [%hhd]\n", n);
 	i = n;
 	j = 0;
 	if (n == -128)

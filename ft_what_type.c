@@ -1,15 +1,15 @@
 #include "libftprintf.h"
+/*
 #include <stdarg.h>
 #include <inttypes.h>
 #include <stddef.h>
 #include <wchar.h>
 #include <sys/types.h>
-
 char		*ft_ctoa(char n);
 char		*ft_itoa(int n);
 char		*ft_sitoa(short int n);
 char		*ft_ssttoa(ssize_t n);
-
+*/
 char	*ft_what_type(int n, va_list ap)
 {
 	if(n == 1)
@@ -22,7 +22,7 @@ char	*ft_what_type(int n, va_list ap)
 //		return (va_arg(ap, unsigned int));
 //		return (unsigned int);
 	}
-	else if (n == 6)
+/*	else if (n == 6)
 	{
 //		return (ft_itoa(va_arg(ap, int)));
 		return (va_arg(ap, int));
@@ -34,7 +34,7 @@ char	*ft_what_type(int n, va_list ap)
 		return (va_arg(ap, char*));
 //		return (char*);
 	}
-/*	else if (n == 8)
+	else if (n == 8)
 	{
 		return (ft_itoa(va_arg(ap, int)));
 		return (va_arg(ap, void*));
@@ -108,17 +108,17 @@ char	*ft_what_type(int n, va_list ap)
 	else if (n >= 32 && n <= 35)
 	{
 		return (ft_uimtoa(va_arg(ap, uintmax_t)));
-		return (va_arg(ap, uintmax_t));
+//		return (va_arg(ap, uintmax_t));
 //		return (uintmax_t);
 	}
-	else if (n == 36)
+/*	else if (n == 36)
 	{
-		return (ft_sstoa(va_arg(ap, ssize_t)));
+		return (ft_ssttoa(va_arg(ap, ssize_t)));
 //		return (ft_ssttoa(va_arg(ap, ssize_t)));
 	}
-	else if (n >= 37 && n <= 40)
+*/	else if (n >= 37 && n <= 40)
 	{
-		return (ft_ssitoa(va_arg(ap, size_t)));
+		return (ft_sttoa(va_arg(ap, size_t)));
 //		return (va_arg(ap, size_t));
 //		return (size_t);
 	}

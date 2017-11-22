@@ -9,7 +9,7 @@
 */
 #include "libftprintf.h"
 
-char	*ft_what_type(int n, va_list ap);
+//char	*ft_what_type(int n, va_list ap);
 
 /*int		ft_type_arg(int n)
 {
@@ -31,14 +31,22 @@ int		ft_printf(const char *format, ...)
 	int			nb_args;
 	int			i;
 //	int 		j;
-	flag_type	type;
+	flag_type	flag;
 //	type		wtype;
 	wii			wiit;
 	char		*cur_arg = (char *)format;
 	
 //	j = 1;
 	i = 0;
-	nb_args = 0;
+/*	type.conv_num = 0;
+	type.width = 0;
+	type.preci = 0;
+	type.minus = 0;
+	type.dies = 0;
+	type.zero = 0;
+	type.space = 0;
+	type.point = 0;
+*/	nb_args = 0;
 	wiit = ft_watinit(format, ft_size_tab(format));
 	if (format == NULL)
 	{
@@ -51,9 +59,9 @@ int		ft_printf(const char *format, ...)
 		while (wiit.pos_conv[i] != 1 && wiit.tab[i])
 			i++;
 		nb_args++;
-		type = ft_arg_conv(wiit.tab[i]);
+		flag = ft_arg_conv(wiit.tab[i]);
 //		wtype = ft_what_type(type);
-		cur_arg = ft_what_type(type.conv_num, ap);
+		cur_arg = ft_what_type(flag.conv_num, ap);
 //		printf("test de va_arg de la premiere boucle cur_arg est : [%s]\n", cur_arg);
 		free(cur_arg);
 		i++;
@@ -70,8 +78,8 @@ int		ft_printf(const char *format, ...)
 			ft_putstr(wiit.tab[i]);
 		else if (wiit.pos_conv[i] == 1)
 		{
-			type = ft_arg_conv(wiit.tab[i]); 
-			cur_arg = ft_what_type(type.conv_num, ap);
+			flag = ft_arg_conv(wiit.tab[i]); 
+			cur_arg = ft_what_type(flag.conv_num, ap);
 			ft_putstr(cur_arg);
 //			free(type.tabpw);
 			free(cur_arg);

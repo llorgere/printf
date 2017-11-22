@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-char		*ft_strndup(const char *s, size_t n);
+//char		*ft_strndup(const char *s, size_t n);
 int			ft_two_l_conv(char *str)
 {
 	if (str[1] == 'd' || str[0] == 'i')
@@ -42,6 +42,8 @@ int			ft_three_h_conv(char *str)
 		return (29);
 	else if (str[2] == 'X')
 		return (30);
+	else
+		return (0);
 }
 
 int			ft_three_l_conv(char *str)
@@ -56,6 +58,8 @@ int			ft_three_l_conv(char *str)
 		return (19);
 	else if (str[2] == 'X')
 		return (20);
+	else
+		return (0);
 }
 
 int			ft_two_h_conv(char *str)
@@ -70,6 +74,8 @@ int			ft_two_h_conv(char *str)
 		return (24);
 	else if (str[1] == 'X')
 		return (25);
+	else
+		return (0);
 }
 
 int			ft_two_z_conv(char *str)
@@ -84,6 +90,8 @@ int			ft_two_z_conv(char *str)
 		return (34);
 	else if (str[1] == 'X')
 		return (35);
+	else
+		return (0);
 }
 
 int			ft_two_j_conv(char *str)
@@ -98,6 +106,8 @@ int			ft_two_j_conv(char *str)
 		return (39);
 	else if (str[1] == 'X')
 		return (40);
+	else 
+		return (0);
 }
 
 int			ft_one_conv(char *str)
@@ -185,8 +195,8 @@ flag_type		ft_arg_conv(char *tab)
 	int		flag_zero;
 	int		flag_space;
 	int		flag_point;
-	char 	*tabpw;
-*/
+*/	char 	*tabpw;
+
 	i = 0;
 	tmp = 0;
 	flag.conv_num = 0;
@@ -229,9 +239,9 @@ flag_type		ft_arg_conv(char *tab)
 		tmp = i;
 		while (tab[i] >= '0' && tab[i] <= '9')
 			i++;
-		flag.tabpw = ft_strndup(tab + tmp, i - tmp + 1);
-		flag.width = ft_atoi(flag.tabpw);
-		free(flag.tabpw);
+		tabpw = ft_strndup(tab + tmp, i - tmp + 1);
+		flag.width = ft_atoi(tabpw);
+		free(tabpw);
 	}
 	if (tab[i] == '.')
 	{
@@ -239,9 +249,9 @@ flag_type		ft_arg_conv(char *tab)
 		tmp = i;
 		while (tab[i] >= '0' && tab[i] <= '9')
 			i++;
-		flag.tabpw = ft_strndup(tab + tmp, i - tmp + 1);
-		flag.preci = ft_atoi(flag.tabpw);
-		free(flag.tabpw);
+		tabpw = ft_strndup(tab + tmp, i - tmp + 1);
+		flag.preci = ft_atoi(tabpw);
+		free(tabpw);
 	}
 	flag.conv_num = ft_what_conv(tab + i);
 	return (flag);

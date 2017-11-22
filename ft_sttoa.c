@@ -1,4 +1,4 @@
-#include "libft.h"
+//#include "libft.h"
 #include "libftprintf.h"
 
 static char	*ft_sttoa_malloc(size_t n, int j)
@@ -10,11 +10,6 @@ static char	*ft_sttoa_malloc(size_t n, int j)
 	tab[j] = '\0';
 	if (n == 0)
 		tab[0] = 48;
-	if (n < 0)
-	{
-		tab[0] = '-';
-		n = -n;
-	}
 	while (n > 0)
 	{
 		tab[j - 1] = (n % 10) + 48;

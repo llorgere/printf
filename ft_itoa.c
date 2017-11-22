@@ -1,14 +1,20 @@
-#include <stdlib.h>
-#include <stdarg.h>
-#include <inttypes.h>
-#include <stddef.h>
-#include <wchar.h>
-#include <sys/types.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: llorgere <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/05/01 15:30:57 by llorgere          #+#    #+#             */
+/*   Updated: 2017/05/05 19:01:09 by llorgere         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libftprintf.h"
 
 static char	*ft_itoa_min(int n)
 {
-	int			j;
+	int		j;
 	char	*tab;
 
 	j = 0;

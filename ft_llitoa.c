@@ -52,7 +52,7 @@ char		*ft_llitoa(long long int n)
 
 	i = n;
 	j = 0;
-	if (n == -9223372036854775808)
+	if (n == -9223372036854775807)
 		return (ft_llitoa_min(n));
 	else if (i <= 0)
 	{
