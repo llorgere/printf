@@ -1,4 +1,3 @@
-#include <stdlib.h>
 #include "libftprintf.h"
 
 static char	*ft_uim_to_oct_malloc(uintmax_t n, int j)
@@ -19,7 +18,7 @@ static char	*ft_uim_to_oct_malloc(uintmax_t n, int j)
 	return (tab);
 }
 
-char		*ft_uim_to_oct(uintmax_t n)
+char		*ft_uim_to_octal(uintmax_t n)
 {
 	uintmax_t	i;
 	int			j;

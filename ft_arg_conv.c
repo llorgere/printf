@@ -19,7 +19,7 @@ int			ft_two_l_conv(char *str)
 		return (14);
 	else if (str[1] == 's')
 		return (15);
-//cette partie pas sur du tout
+	//cette partie pas sur du tout
 	else if (str[1] == 'D')
 		return (16);
 	else if (str[1] == 'U')
@@ -186,22 +186,23 @@ flag_type		ft_arg_conv(char *tab)
 	int			i;
 	int			tmp;
 	flag_type	flag;
-/*	int		conv_num;
-	int		width;
-	int		preci;
-	int		flag_minus;
-	int		flag_plus;
-	int		flag_dies;
-	int		flag_zero;
-	int		flag_space;
-	int		flag_point;
-*/	char 	*tabpw;
+	/*	int		conv_num;
+		int		width;
+		int		preci;
+		int		flag_minus;
+		int		flag_plus;
+		int		flag_dies;
+		int		flag_zero;
+		int		flag_space;
+		int		flag_point;
+		*/	
+	char 	*tabpw;
 
-	i = 0;
+	i = 1;
 	tmp = 0;
 	flag.conv_num = 0;
-	flag.width = 0;
-	flag.preci = 0;
+	flag.width = -1;
+	flag.preci = -1;
 	flag.minus = 0;
 	flag.plus = 0;
 	flag.dies = 0;
@@ -209,50 +210,65 @@ flag_type		ft_arg_conv(char *tab)
 	flag.space = 0;
 	flag.point = 0;
 
-	if (tab[i] == '-')
+	while (tab[i] != 'd' && tab[i] != 'i' && tab[i] != 's' &&
+			tab[i] != 'p' && tab[i] != 'S' && tab[i] !='D' &&
+			tab[i] !='U' && tab[i] !='O' && tab[i] != 'o' &&
+			tab[i] !='u' && tab[i] !='x' && tab[i] !='X' &&
+			tab[i] !='c' && tab[i] !='C'  && tab[i] !='\0' &&
+			tab[i] != 'l' && tab[i] != 'j' && tab[i] != 'h' && tab[i] != 'z')
 	{
-		flag.minus++;
-		i++;
-	}
-	if (tab[i] == '+')
-	{
-		flag.plus++;
-		i++;
-	}
-	if (tab[i] == ' ')
-	{
-		flag.space++;
-		i++;
-	}
-	if (tab[i] == '0')
-	{
-		flag.zero++;
-		i++;
-	}
-	if (tab[i] == '#')
-	{
-		flag.dies++;
-		i++;
-	}
-	if (tab[i] != '0')
-	{
-		tmp = i;
-		while (tab[i] >= '0' && tab[i] <= '9')
+		if (tab[i] == '-' && flag.minus == 0 && flag.width < 0 && flag.preci < 0)
+		{
+			flag.minus++;
 			i++;
-		tabpw = ft_strndup(tab + tmp, i - tmp + 1);
-		flag.width = ft_atoi(tabpw);
-		free(tabpw);
-	}
-	if (tab[i] == '.')
-	{
-		i++;
-		tmp = i;
-		while (tab[i] >= '0' && tab[i] <= '9')
+		}
+		else if (tab[i] == '+' && flag.plus == 0 && flag.width < 0 && flag.preci < 0)
+		{
+			flag.plus++;
 			i++;
-		tabpw = ft_strndup(tab + tmp, i - tmp + 1);
-		flag.preci = ft_atoi(tabpw);
-		free(tabpw);
+		}
+		else if (tab[i] == ' ' && flag.space == 0 && flag.width < 0 && flag.preci < 0)
+		{
+			flag.space++;
+			i++;
+		}
+		else if (tab[i] == '0' && flag.zero == 0 && flag.width < 0 && flag.preci < 0)
+		{
+			flag.zero++;
+			i++;
+		}
+		else if (tab[i] == '#' && flag.dies == 0 && flag.width < 0 && flag.preci < 0)
+		{
+			flag.dies++;
+			i++;
+		}
+		else if (tab[i] > '0' && tab[i] <= '9' && flag.width < 0 && flag.preci < 0)
+		{
+			tmp = i;
+			while (tab[i] >= '0' && tab[i] <= '9')
+				i++;
+			tabpw = ft_strndup(tab + tmp, i - tmp + 1);
+			flag.width = ft_atoi(tabpw);
+			free(tabpw);
+		}
+		else if (tab[i] == '.' && flag.preci < 0)
+		{
+			i++;
+			tmp = i;
+			while (tab[i] >= '0' && tab[i] <= '9')
+				i++;
+			tabpw = ft_strndup(tab + tmp, i - tmp + 1);
+			flag.preci = ft_atoi(tabpw);
+			free(tabpw);
+		}
+		else if (flag.width < 0 && flag.preci < 0)
+			i++;
+		else
+		{
+			flag.conv_num = -1;
+			return (flag);
+		}
 	}
-	flag.conv_num = ft_what_conv(tab + i);
-	return (flag);
+		flag.conv_num = ft_what_conv(tab + i);
+		return (flag);
 }

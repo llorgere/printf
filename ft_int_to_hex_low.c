@@ -1,6 +1,5 @@
-#include <stdlib.h>
 #include "libftprintf.h"
-
+#include <stdio.h>
 static char	*ft_int_to_hex_malloc(unsigned int n, int j)
 {
 	char	*tab;
@@ -28,6 +27,7 @@ char		*ft_int_to_hex_low(unsigned int n)
 	int				j;
 
 	i = n;
+	printf("i est %u", i);
 	j = 0;
 	while (i > 0)
 	{

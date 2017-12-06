@@ -1,4 +1,3 @@
-#include <stdlib.h>
 #include "libftprintf.h"
 
 static char	*ft_st_to_oct_malloc(size_t n, int j)
@@ -19,7 +18,7 @@ static char	*ft_st_to_oct_malloc(size_t n, int j)
 	return (tab);
 }
 
-char		*ft_st_to_oct(size_t n)
+char		*ft_st_to_octal(size_t n)
 {
 	size_t	i;
 	int		j;

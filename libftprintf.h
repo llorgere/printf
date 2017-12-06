@@ -43,7 +43,7 @@ typedef struct		s_list
 	struct s_list	*next;
 }					t_list;
 
-
+flag_type			ft_flag_adjust(flag_type flag);
 int					ft_printf(const char *format, ...);
 flag_type			ft_arg_conv(char *tab);
 char				*ft_what_type(int n, va_list ap);
@@ -83,6 +83,7 @@ char				*ft_lg_to_hex_low(unsigned long int n);
 char				*ft_lg_to_hex_up(unsigned long int n);
 char				*ft_luitoa(unsigned long int n);
 char				*ft_lluitoa(unsigned long long int n);
+char				*ft_llg_to_octal(unsigned long long int n);
 char				*ft_llg_to_hex_up(unsigned long long int n);
 char				*ft_llg_to_hex_low(unsigned long long int n);
 char				*ft_sh_to_octal(unsigned short int n);
@@ -151,5 +152,6 @@ void				ft_lstdel(t_list **alst, void (*del)(void *, size_t));
 void				ft_lstadd(t_list **alst, t_list *new);
 void				ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
+char				*ft_chardup(unsigned char s);
 
 #endif

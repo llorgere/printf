@@ -1,4 +1,3 @@
-#include <stdlib.h>
 #include "libftprintf.h"
 
 static char	*ft_int_to_oct_malloc(unsigned int n, int j)
@@ -19,7 +18,7 @@ static char	*ft_int_to_oct_malloc(unsigned int n, int j)
 	return (tab);
 }
 
-char		*ft_int_to_oct(unsigned int n)
+char		*ft_int_to_octal(unsigned int n)
 {
 	unsigned int	i;
 	int				j;

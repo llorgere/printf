@@ -18,7 +18,7 @@ static char	*ft_sitoa_min(short int n)
 	tab[6] = '\0';
 	tab[5] = '8';
 	n = -(n / 10);
-	j = 10;
+	j = 5;
 	while (n > 0)
 	{
 		tab[j - 1] = (n % 10) + 48;
