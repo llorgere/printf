@@ -6,11 +6,11 @@ static char	*ft_llitoa_min(long long int n)
 	char	*tab;
 
 	j = 0;
-	if (!(tab = (char *)malloc(sizeof(*tab) * (12))))
+	if (!(tab = (char *)malloc(sizeof(*tab) * (21))))
 		return (0);
 	tab[0] = '-';
-	tab[11] = '\0';
-	tab[10] = '8';
+	tab[20] = '\0';
+	tab[19] = '7';
 	n = -(n / 10);
 	j = 10;
 	while (n > 0)

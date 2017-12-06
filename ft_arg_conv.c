@@ -158,7 +158,7 @@ int		ft_two_conv(char *str)
 
 int		ft_three_conv(char *str)
 {
-	if (str[0] == 'l' && str[1] == 'h')
+	if (str[0] == 'l' && str[1] == 'l')
 		return (ft_three_l_conv(str));
 	else if (str[0] == 'h' && str[1] == 'h')
 		return (ft_three_h_conv(str));
@@ -212,9 +212,9 @@ flag_type		ft_arg_conv(char *tab)
 
 	while (tab[i] != 'd' && tab[i] != 'i' && tab[i] != 's' &&
 			tab[i] != 'p' && tab[i] != 'S' && tab[i] !='D' &&
-			tab[i] !='U' && tab[i] !='O' && tab[i] != 'o' &&
-			tab[i] !='u' && tab[i] !='x' && tab[i] !='X' &&
-			tab[i] !='c' && tab[i] !='C'  && tab[i] !='\0' &&
+			tab[i] != 'U' && tab[i] !='O' && tab[i] != 'o' &&
+			tab[i] != 'u' && tab[i] !='x' && tab[i] !='X' &&
+			tab[i] != 'c' && tab[i] !='C'  && tab[i] !='\0' &&
 			tab[i] != 'l' && tab[i] != 'j' && tab[i] != 'h' && tab[i] != 'z')
 	{
 		if (tab[i] == '-' && flag.minus == 0 && flag.width < 0 && flag.preci < 0)

@@ -1,5 +1,5 @@
 #include "libftprintf.h"
-
+#include <stdio.h>
 
 char	*ft_add_plus(char *str, int len)
 {
@@ -203,7 +203,10 @@ char	*ft_winopr(char *str, flag_type flag, int len)
 			return (ft_addw0(tab, flag, ft_strlen(tab)));
 		}
 		else
-			return (ft_addwf(str, flag, len));
+		{
+			tab = ft_addwf(str, flag, len);
+			return (ft_addw(tab, flag, ft_strlen(tab)));
+		}
 	}
 }
 
@@ -213,6 +216,7 @@ char	*ft_nowipr(char *str, flag_type flag, int len)
 	int		i;
 	int		m;
 
+//	printf("test de nowipr\n");
 	m = 0;
 	i = 0;
 	if (flag.conv_num == 7 || flag.conv_num == 18)
@@ -263,6 +267,7 @@ char	*ft_nowipr(char *str, flag_type flag, int len)
 
 char	*ft_nowinopr(char *str, flag_type flag, int len)
 {
+//	printf("test de nowinopr\n");
 	if (flag.dies == 1)
 	{
 		return (ft_add_dies(str, flag, len));
@@ -283,12 +288,17 @@ char	*ft_wipr(char *str, flag_type flag, int len)
 {
 	char	*tmp;
 
+//	printf("test de wipr\n");
 	if (flag.width <= len)
 		return (ft_nowipr(str, flag, len));
 	else
 	{
 		tmp = ft_nowipr(str, flag, len);
-		free(str);
+		flag.space = 0;
+		flag.plus = 0;
+		flag.dies = 0;
+//		printf("test de wipr 2 tmp est [%s]\n", tmp);
+//		printf("test de wipr 3\n");
 		return (ft_winopr(tmp, flag, ft_strlen(tmp)));
 	}
 }
@@ -299,6 +309,7 @@ char	*ft_flag_use(char *str, flag_type flag)
 
 	len = ft_strlen(str);
 	flag = ft_flag_adjust(flag);
+//	printf("test des valeurs des flags\ncn : [%d] | wi : [%d] | pr : [%d] | - : [%d] | + : [%d] | # : [%d] | 0 : [%d] | sp : [%d] | . : [%d] | et str est [%s]\n", flag.conv_num, flag.width, flag.preci, flag.minus, flag.plus, flag.dies, flag.zero, flag.space, flag.point, str);
 	if (flag.width <= 0 && flag.preci <= 0)
 		return (ft_nowinopr(str, flag, len));
 	if (flag.width <= 0 && flag.preci > 0)

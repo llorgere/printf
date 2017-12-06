@@ -8,7 +8,8 @@ int		main(void)
 	ssize_t	d = -9223372036854775807;
 	char *e = "Salut Les Copains";
 	char f = 'a';
+	long long g = -3;
 //	printf("e est %s", e);
-	ft_printf("le test de printf a[%u] b[%hu] c[%hhd] d[%jd] e[%s] f[%c]\n", a, b, c, d, e, f);
+	ft_printf("le test de printf a[%-15.12u] b[%hu] c[%hhd] d[%jd] e[%#10s] f[%c] g[%lld]\n", a, b, c, d, e, f, g);
 	return (0);
 }
