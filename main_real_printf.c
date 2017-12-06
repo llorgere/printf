@@ -84,5 +84,6 @@ int		main(void)
 	printf("test i de {-+ 0#10x} || [%-+ 0#10lc]\n", i);
 	printf("test de #x pour 0 [%#10.5x]", m);
 	printf("test de #o pour 0 [%#10.5o]", m);
+	printf("test de precision sur nombre negatif [%10d]", c);
 	return (0);
 }

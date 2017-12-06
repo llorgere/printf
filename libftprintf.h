@@ -43,6 +43,21 @@ typedef struct		s_list
 	struct s_list	*next;
 }					t_list;
 
+char				*ft_add_plus(char *str, int len);
+char				*ft_add_space(char *str, int len);
+char				*ft_add_dies_o(char *str, int len);
+char				*ft_add_dies_x(char *str, int len);
+char				*ft_add_dies_X(char *str, int len);
+char				*ft_add_dies(char *str, flag_type flag, int len);
+char				*ft_addw(char *str, flag_type flag, int len);
+char				*ft_addw0(char *str, flag_type flag, int len);
+char				*ft_addwmin(char *str, flag_type flag, int len);
+char				*ft_addwf(char *str, flag_type flag, int len);
+char				*ft_winopr(char *str, flag_type flag, int len);
+char				*ft_nowipr(char *str, flag_type flag, int len);
+char				*ft_nowinopr(char *str, flag_type flag, int len);
+char				*ft_wipr(char *str, flag_type flag, int len);
+char				*ft_flag_use(char *str, flag_type flag);
 flag_type			ft_flag_adjust(flag_type flag);
 int					ft_printf(const char *format, ...);
 flag_type			ft_arg_conv(char *tab);

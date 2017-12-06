@@ -33,5 +33,7 @@ flag_type	ft_flag_adjust(flag_type flag)
 	if (flag.zero == 1 && ((flag.conv_num == 6) || (flag.conv_num == 7) ||
 			(flag.conv_num == 14) || (flag.conv_num == 15)))
 		flag.zero = 0;
+	if (flag.preci > 0 && (flag.conv_num == 6 || flag.conv_num == 8 || flag.conv_num == 14))
+		flag.preci = 0;
 	return (flag);
 }

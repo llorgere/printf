@@ -22,7 +22,7 @@ int		ft_printf(const char *format, ...)
 		{
 			flag = ft_arg_conv(wiit.tab[i]); 
 			cur_arg = ft_what_type(flag.conv_num, ap);
-//			cur_arg = ft_flag_use(cur_arg, flag);
+			cur_arg = ft_flag_use(cur_arg, flag);
 			ft_putstr(cur_arg);
 			free(cur_arg);
 		}

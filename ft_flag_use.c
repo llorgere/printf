@@ -1,16 +1,53 @@
 #include "libftprintf.h"
 
+
+char	*ft_add_plus(char *str, int len)
+{
+	char	*tab;
+
+	if(str[0] == '-')
+		return (str);
+	else
+	{
+		if (!(tab = malloc(sizeof(char) * 2 + len)))
+			return (NULL);
+		tab[0] = '+';
+		tab[len + 1] = '\0';
+		tab = ft_strcat(tab, str);
+		free(str);
+		return (tab);
+	}
+}
+
+char	*ft_add_space(char *str, int len)
+{
+	char	*tab;
+
+	if(str[0] == '-')
+		return (str);
+	else
+	{
+		if (!(tab = malloc(sizeof(char) * 2 + len)))
+			return (NULL);
+		tab[0] = ' ';
+		tab[len + 1] = '\0';
+		tab = ft_strcat(tab, str);
+		free(str);
+		return (tab);
+	}
+}
+
 char	*ft_add_dies_o(char *str, int len)
 {
 	char	*tab;
 
-	if (str[0] = '0')
+	if (str[0] == '0')
 		return (str);
 	if (!(tab = malloc(sizeof(char) * 2 + len)))
 		return (NULL);
 	tab[0] = '0';
 	tab[len + 1] = '\0';
-	tab = ft_strcat(tab, srt);
+	tab = ft_strcat(tab, str);
 	free(str);
 	return (tab);
 }
@@ -24,7 +61,7 @@ char	*ft_add_dies_x(char *str, int len)
 	tab[0] = '0';
 	tab[1] = 'x';
 	tab[len + 2] = '\0';
-	tab = ft_strcat(tab, srt);
+	tab = ft_strcat(tab, str);
 	free(str);
 	return (tab);
 }
@@ -38,14 +75,14 @@ char	*ft_add_dies_X(char *str, int len)
 	tab[0] = '0';
 	tab[1] = 'X';
 	tab[len + 2] = '\0';
-	tab = ft_strcat(tab, srt);
+	tab = ft_strcat(tab, str);
 	free(str);
 	return (tab);
 }
 
 char	*ft_add_dies(char *str, flag_type flag, int len)
 {
-	if (flag.dies == 1 && ((str[i] != '0' && len == 1) ||
+	if (flag.dies == 1 && ((str[0] != '0' && len == 1) ||
 				(len > 1)))
 	{
 		if (flag.conv_num == 3 || flag.conv_num == 11 ||
@@ -79,7 +116,7 @@ char	*ft_addw(char *str, flag_type flag, int len)
 		tab[i] = ' ';
 		i++;
 	}
-	tab = ft_strcat(tab, srt);
+	tab = ft_strcat(tab, str);
 	free(str);
 	return (tab);
 }
@@ -93,12 +130,21 @@ char	*ft_addw0(char *str, flag_type flag, int len)
 	if (!(tab = malloc(sizeof(char) * flag.width + 1)))
 		return (NULL);
 	tab[flag.width] = '\0';
+	if (str[0] == '-' && (flag.conv_num == 1 || flag.conv_num == 9 ||
+				flag.conv_num == 16 || flag.conv_num == 21 ||
+				flag.conv_num == 26 || flag.conv_num == 31 ||
+				flag.conv_num == 36))
+	{
+		tab[i] = '-';
+		i++;
+		str[0] = '0';
+	}
 	while (i < (flag.width - len))
 	{
 		tab[i] = '0';
 		i++;
 	}
-	tab = ft_strcat(tab, srt);
+	tab = ft_strcat(tab, str);
 	free(str);
 	return (tab);
 }
@@ -106,6 +152,7 @@ char	*ft_addw0(char *str, flag_type flag, int len)
 char	*ft_addwmin(char *str, flag_type flag, int len)
 {
 	int		i;
+	char	*tab;
 
 	i = 0;
 	if (!(tab = malloc(sizeof(char) * flag.width + 1)))
@@ -113,7 +160,7 @@ char	*ft_addwmin(char *str, flag_type flag, int len)
 	tab[flag.width] = '\0';
 	while (i < (len))
 	{
-		tab[i] = srt[i];
+		tab[i] = str[i];
 		i++;
 	}
 	while (i < flag.width)
@@ -125,16 +172,14 @@ char	*ft_addwmin(char *str, flag_type flag, int len)
 	return (tab);
 }
 
-char	*ft_addwf(char *str, flag_type, int len)
+char	*ft_addwf(char *str, flag_type flag, int len)
 {
-	char 	*tab;
-
 	if (flag.dies == 1)
 		return (ft_add_dies(str, flag, len));
 	else if (flag.plus == 1)
-		return (ft_add_plus(str, flag, len));
+		return (ft_add_plus(str, len));
 	else if (flag.space == 1)
-		return (ft_add_space(str, flag, len));
+		return (ft_add_space(str, len));
 	else
 		return (str);
 }
@@ -143,7 +188,7 @@ char	*ft_winopr(char *str, flag_type flag, int len)
 {
 	char	*tab;
 
-	if (flag.width =< len)
+	if (flag.width <= len)
 		return (ft_nowinopr(str, flag, len));
 	else
 	{
@@ -162,61 +207,90 @@ char	*ft_winopr(char *str, flag_type flag, int len)
 	}
 }
 
-char	*ft_add_plus(char *str, flag_type flag, int len)
+char	*ft_nowipr(char *str, flag_type flag, int len)
 {
 	char	*tab;
+	int		i;
+	int		m;
 
-	if(str[0] == '-')
-		return (str);
-	else
+	m = 0;
+	i = 0;
+	if (flag.conv_num == 7 || flag.conv_num == 18)
 	{
-		if (!(tab = malloc(sizeof(char) * 2 + len)))
-			return (NULL);
-		tab[0] = '+';
-		tab[len + 1] = '\0';
-		tab = ft_strcat(tab, srt);
-		free(srt);
-		return (tab);
+		if (flag.preci >= len)
+			return (ft_nowinopr(str, flag, len));
+		else
+		{
+			tab = ft_strndup(str, flag.preci);
+			free(str);
+			return (ft_nowinopr(tab, flag, flag.preci));
+		}
 	}
-}
-
-char	*ft_add_space(char *str, flag_type flag, int len)
-{
-	char	*tab;
-
-	if(str[0] == '-')
-		return (str);
 	else
-	{
-		if (!(tab = malloc(sizeof(char) * 2 + len)))
-			return (NULL);
-		tab[0] = ' ';
-		tab[len + 1] = '\0';
-		tab = ft_strcat(tab, srt);
-		free(srt);
-		return (tab);
+	{	if (str[0] == '-')
+		len--;
+		if (flag.preci <= len)
+			return (ft_nowinopr(str, flag, len));
+		else
+		{
+			if (str[0] == '-')
+			{
+				if (!(tab = malloc(sizeof(char) * flag.preci + 2)))
+					return (NULL);
+				tab[i] = '-';
+				tab[flag.preci + 1] = '\0';
+				str[0] = '0';
+				i++;
+				m++;
+			}
+			else
+			{
+				if (!(tab = malloc(sizeof(char) * flag.preci + 1)))
+					return (NULL);
+				tab[flag.preci] = '\0';
+			}
+			while (i < (flag.preci - len - m))
+			{
+				tab[i] = '0';
+				i++;
+			}
+			tab = ft_strcat(tab, str);
+			free(str);
+			return (ft_nowinopr(tab, flag, ft_strlen(tab)));
+		}
 	}
 }
 
 char	*ft_nowinopr(char *str, flag_type flag, int len)
 {
-	int		i;
-
-	i = 0;
 	if (flag.dies == 1)
 	{
-		return (ft_add_dies(str, flag, len))
+		return (ft_add_dies(str, flag, len));
 	}
 	else if (flag.plus == 1)
 	{
-		return (ft_add_plus(str, flag, len));
+		return (ft_add_plus(str, len));
 	}
 	else if (flag.space == 1)
 	{
-		return (ft_add_space(str, flag, len));
+		return (ft_add_space(str, len));
 	}
 	else
 		return (str);
+}
+
+char	*ft_wipr(char *str, flag_type flag, int len)
+{
+	char	*tmp;
+
+	if (flag.width <= len)
+		return (ft_nowipr(str, flag, len));
+	else
+	{
+		tmp = ft_nowipr(str, flag, len);
+		free(str);
+		return (ft_winopr(tmp, flag, ft_strlen(tmp)));
+	}
 }
 
 char	*ft_flag_use(char *str, flag_type flag)
@@ -225,19 +299,12 @@ char	*ft_flag_use(char *str, flag_type flag)
 
 	len = ft_strlen(str);
 	flag = ft_flag_adjust(flag);
-	if (flag.width > 0 && flag.preci > 0)
-	{
-	}
-	if (flag.width < 0 && flag.preci < 0)
-	{
+	if (flag.width <= 0 && flag.preci <= 0)
 		return (ft_nowinopr(str, flag, len));
-	}
-	if (flag.width < 0 && flag.preci > 0)
-	{
-
-	}
-	if (flag.width > 0 && flag.preci < 0)
-	{
-
-	}
+	if (flag.width <= 0 && flag.preci > 0)
+		return (ft_nowipr(str, flag, len));
+	if (flag.width > 0 && flag.preci <= 0)
+		return (ft_winopr(str, flag, len));
+	else
+		return (ft_wipr(str, flag, len));
 }
