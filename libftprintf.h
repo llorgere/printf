@@ -10,6 +10,7 @@
 # include <stddef.h>
 # include <sys/types.h>
 # include <stdarg.h>
+# include <wchar.h>
 
 typedef struct
 {
@@ -168,5 +169,8 @@ void				ft_lstadd(t_list **alst, t_list *new);
 void				ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 char				*ft_chardup(unsigned char s);
+char				*ft_wchardup(wchar_t *s);
+char				*ft_wintdup(wchar_t s);
+char				*ft_p_conv(long long unsigned int s);
 
 #endif

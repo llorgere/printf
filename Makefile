@@ -111,7 +111,10 @@ SRC = ft_printf.c \
 	  ft_lstmap.c \
 	  ft_chardup.c \
 	  ft_flag_adjust.c \
-	  ft_flag_use.c
+	  ft_flag_use.c \
+	  ft_wintdup.c \
+	  ft_wchardup.c \
+	  ft_p_conv.c
 
 CC = gcc
 OBJ = $(SRC:.c=.o)

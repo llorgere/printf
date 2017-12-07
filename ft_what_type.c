@@ -30,13 +30,14 @@ char	*ft_what_type(int n, va_list ap)
 	{
 		return (ft_strdup(va_arg(ap, const char*)));
 	}
-/*	else if (n == 8)
+	else if (n == 8)
 	{
-		return (ft_itoa(va_arg(ap, int)));
-		return (va_arg(ap, void*));
+//		return (ft_itoa(va_arg(ap, int)));
+		return (ft_p_conv(va_arg(ap, long long unsigned int)));
+//		return (va_arg(ap, void*));
 //		return (void*);
 	}
-*/	else if (n == 9)
+	else if (n == 9)
 	{
 		return (ft_litoa(va_arg(ap, long int)));
 	}
@@ -56,19 +57,15 @@ char	*ft_what_type(int n, va_list ap)
 	{
 		return (ft_lg_to_hex_up(va_arg(ap, long unsigned int)));
 	}
-/*	else if (n == 14)
+	else if (n == 14)
 	{
-		return (ft_itoa(va_arg(ap, wint_t)));
-		return (va_arg(ap, wint_t));
-//		return (wint_t);
+		return (ft_wintdup(va_arg(ap, wint_t)));
 	}
 	else if (n == 15)
 	{
-		return (ft_itoa(va_arg(ap, int)));
-		return (va_arg(ap, wchar_t));
-//		return (wchar_t*);
+		return (ft_wchardup(va_arg(ap, wchar_t*)));
 	}
-*/	else if (n == 16)
+	else if (n == 16)
 	{
 		return (ft_llitoa(va_arg(ap, long long int)));
 	}
