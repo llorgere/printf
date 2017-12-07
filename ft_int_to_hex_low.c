@@ -27,7 +27,6 @@ char		*ft_int_to_hex_low(unsigned int n)
 	int				j;
 
 	i = n;
-	printf("i est %u", i);
 	j = 0;
 	while (i > 0)
 	{

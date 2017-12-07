@@ -214,10 +214,8 @@ char	*ft_nowipr(char *str, flag_type flag, int len)
 {
 	char	*tab;
 	int		i;
-	int		m;
 
 //	printf("test de nowipr\n");
-	m = 0;
 	i = 0;
 	if (flag.conv_num == 7 || flag.conv_num == 18)
 	{
@@ -245,7 +243,6 @@ char	*ft_nowipr(char *str, flag_type flag, int len)
 				tab[flag.preci + 1] = '\0';
 				str[0] = '0';
 				i++;
-				m++;
 			}
 			else
 			{
@@ -253,7 +250,7 @@ char	*ft_nowipr(char *str, flag_type flag, int len)
 					return (NULL);
 				tab[flag.preci] = '\0';
 			}
-			while (i < (flag.preci - len - m))
+			while (i < (flag.preci - len))
 			{
 				tab[i] = '0';
 				i++;
